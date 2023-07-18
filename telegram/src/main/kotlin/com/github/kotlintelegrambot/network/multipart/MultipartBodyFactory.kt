@@ -2,7 +2,6 @@ package com.github.kotlintelegrambot.network.multipart
 
 import com.github.kotlintelegrambot.entities.ChatId
 import com.github.kotlintelegrambot.entities.TelegramFile
-import com.github.kotlintelegrambot.entities.inputmedia.InputMediaDocument
 import com.github.kotlintelegrambot.entities.inputmedia.InputMediaAudio
 import com.github.kotlintelegrambot.entities.inputmedia.InputMediaDocument
 import com.github.kotlintelegrambot.entities.inputmedia.InputMediaPhoto
@@ -45,7 +44,7 @@ internal class MultipartBodyFactory(private val gson: Gson) {
 
     private fun MediaGroup.takeFilesParts(): List<MultipartBody.Part> = medias.flatMap { groupableMedia ->
         val mediaType = when (groupableMedia) {
-            if InputMediaDocument -> MediaTypeConstants.DOCUMENT
+            is InputMediaDocument -> MediaTypeConstants.DOCUMENT
             is InputMediaPhoto -> MediaTypeConstants.IMAGE
             is InputMediaVideo -> MediaTypeConstants.VIDEO
             is InputMediaAudio -> MediaTypeConstants.AUDIO
