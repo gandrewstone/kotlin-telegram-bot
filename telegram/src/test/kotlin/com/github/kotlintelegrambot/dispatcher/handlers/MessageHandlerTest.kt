@@ -49,6 +49,7 @@ class MessageHandlerTest {
         val botMock = mockk<Bot>()
         val anyMessage = anyMessage()
         val anyUpdate = anyUpdate(message = anyMessage)
+        val isEdited = false
 
         sut.handleUpdate(botMock, anyUpdate)
 
@@ -56,6 +57,7 @@ class MessageHandlerTest {
             botMock,
             anyUpdate,
             anyMessage,
+            isEdited
         )
         coVerify { handlerMock.invoke(expectedMessageHandlerEnvironment) }
     }

@@ -62,7 +62,7 @@ class CommandHandlerTest {
 
         sut.handleUpdate(botMock, anyUpdate)
 
-        val expectedArgs = CommandHandlerEnvironment(botMock, anyUpdate, commandMessage, listOf(ANY_ARG))
+        val expectedArgs = CommandHandlerEnvironment(botMock, anyUpdate, commandMessage, listOf(ANY_ARG), false)
         coVerify { handlerFunctionMock.invoke(expectedArgs) }
     }
 

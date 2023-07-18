@@ -58,8 +58,12 @@ fun Dispatcher.message(filter: Filter, handleMessage: HandleMessage) {
     addHandler(MessageHandler(filter, handleMessage))
 }
 
-fun Dispatcher.command(command: String, handleCommand: HandleCommand) {
+fun Dispatcher.command(vararg command: String, handleCommand: HandleCommand) {
     addHandler(CommandHandler(command, handleCommand))
+}
+
+fun Dispatcher.commandAnyCase(vararg command: String, handleCommand: HandleCommand) {
+    addHandler(CommandHandler(command.map { it.lowercase() }.toTypedArray(), handleCommand, true))
 }
 
 fun Dispatcher.text(text: String? = null, handleText: HandleText) {

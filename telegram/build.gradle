@@ -3,7 +3,7 @@ buildscript {
     ext.junit_version = "5.5.1"
     ext.logging_interceptor_version = '3.8.0'
     ext.mock_web_server_version = '4.2.1'
-    ext.coroutines_version = '1.6.2'
+    ext.coroutines_version = '1.7.2'
 
     repositories {
         mavenCentral()
@@ -11,13 +11,13 @@ buildscript {
 }
 
 plugins {
-    id 'org.jetbrains.kotlinx.binary-compatibility-validator' version '0.7.1'
+    id 'org.jetbrains.kotlinx.binary-compatibility-validator' version '0.13.2'
 }
 
 apply plugin: 'kotlin'
 
 group 'com.github.kotlintelegrambot'
-version '6.0.7'
+version '6.0.8'
 
 repositories {
     mavenCentral()
@@ -53,12 +53,17 @@ sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_17
 }
 
 compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_17
 }
 
 test {

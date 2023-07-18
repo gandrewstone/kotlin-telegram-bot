@@ -6,4 +6,5 @@ object MediaTypeConstants {
     const val AUDIO_OGG = "audio/ogg"
     const val IMAGE = "image/*"
     const val VIDEO = "video/*"
+    const val AUDIO = "audio/*"
 }
