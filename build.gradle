@@ -5,14 +5,14 @@ buildscript {
 }
 
 plugins {
-    id "org.jetbrains.kotlin.jvm" version "1.5.31"
+    id "org.jetbrains.kotlin.jvm" version "1.9.0"
 }
 
 allprojects {
     apply from: "$rootDir/ktlint.gradle"
 
     group 'com.github.kotlintelegrambot'
-    version '0.3.4'
+    version '0.3.5'
 
     repositories {
         mavenCentral()
@@ -22,3 +22,17 @@ allprojects {
 repositories {
     mavenCentral()
 }
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "17"
+}
+
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "17"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
